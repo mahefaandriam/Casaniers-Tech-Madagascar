@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --nav-h: 64px;
+    --page-max: 1280px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-fosa-50 text-fosa-900 font-body antialiased;
+  }
+
+  * { @apply border-fosa-200; }
+
+  ::selection {
+    @apply bg-fosa-400/20 text-fosa-900;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-fosa-400/50 ring-offset-2;
+  }
+}
+
+@layer components {
+  .page-container {
+    @apply max-w-[var(--page-max)] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-fosa-900 px-5 py-2.5
+           text-sm font-medium text-fosa-50 transition-all duration-200
+           hover:bg-fosa-700 active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-white border border-fosa-200
+           px-5 py-2.5 text-sm font-medium text-fosa-800 transition-all duration-200
+           hover:bg-fosa-100 hover:border-fosa-300 active:scale-[0.97];
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent-500 px-5 py-2.5
+           text-sm font-medium text-white transition-all duration-200
+           hover:bg-accent-600 active:scale-[0.97];
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-fosa-100 overflow-hidden
+           transition-shadow duration-300 hover:shadow-card-hover;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-fosa-200 bg-white px-4 py-2.5 text-sm text-fosa-900
+           placeholder:text-fosa-400 transition-all duration-200
+           focus:border-fosa-400 focus:ring-2 focus:ring-fosa-400/20 outline-none;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden bg-fosa-100 after:absolute after:inset-0
+           after:bg-gradient-to-r after:from-transparent after:via-white/60 after:to-transparent
+           after:animate-shimmer;
+    background-size: 200% 100%;
+  }
+
+  .page-enter {
+    @apply animate-fade-up opacity-0;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme(colors.fosa.300) transparent;
+  }
+}
