@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import { RootLayout } from '@/components/layout/RootLayout'
 import { HomePage } from '@/pages/HomePage'
 import { CataloguePage } from '@/pages/CataloguePage'
@@ -12,11 +12,11 @@ const router = createBrowserRouter([
     path: '/',
     element: <RootLayout />,
     children: [
-      { index: true,              element: <HomePage /> },
-      { path: 'catalogue',        element: <CataloguePage /> },
-      { path: 'produit/:id',      element: <ProductDetailPage /> },
-      { path: 'favoris',          element: <WishlistPage /> },
-      { path: 'compte',           element: <AccountPage /> },
+      { index: true,         element: <HomePage /> },
+      { path: 'catalogue',   element: <CataloguePage /> },
+      { path: 'produit/:id', element: <ProductDetailPage /> },
+      { path: 'favoris',     element: <WishlistPage /> },
+      { path: 'compte',      element: <AccountPage /> },
     ],
   },
   {

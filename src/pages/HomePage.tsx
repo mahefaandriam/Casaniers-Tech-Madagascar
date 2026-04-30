@@ -3,10 +3,22 @@ import { Link } from 'react-router-dom'
 import { MOCK_PRODUCTS, CATEGORIES } from '@/lib/mock-data'
 import { ProductCard } from '@/components/features/product/ProductCard'
 import { FosaMascot } from '@/components/features/mascot/FosaMascot'
+import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+
 
 const featured = MOCK_PRODUCTS.filter(p => p.badge === 'bestseller' || p.badge === 'new').slice(0, 4)
 
 export function HomePage() {
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!sessionStorage.getItem('visited')) {
+            sessionStorage.setItem('visited', '1')
+            navigate('/catalogue', { replace: true })
+        }
+    }, [])
     return (
         <div>
             {/* Hero */}
